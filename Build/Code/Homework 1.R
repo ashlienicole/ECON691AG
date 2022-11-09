@@ -28,12 +28,8 @@ covid.IL <- covid %>%
          pc_deaths=delta(deaths))%>%
   mutate(pc_deaths=ifelse(is.infinite(pc_deaths), NA, pc_deaths),
          Date=as.Date(date, "%Y-%m-%d"))%>%
-  filter(date>="2021-01-01")   #%>% You left this at the end. the Covid.IL is never created because it was looking for new code.
-  
-#The one thing you are forgetting in the code below is telling the plot() command where to find your data. You do this by
-#using the following syntax: covid.IL$pc_cases   In this you have the dataframe name and then the dollar sign telling R
-#that you are going to now tell it what column to look for, so in this case, it would be pc_cases. You need to add covid.IL$ before
-#each of your column names.
+  filter(date>="2021-01-01")    
+
 PC_Plot<-ggplot(data=covid.IL,aes(x=date,y1=pc_cases,y2=pc_deaths),geom_plot())
 print(PC_Plot)
                 
