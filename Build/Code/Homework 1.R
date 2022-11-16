@@ -30,6 +30,14 @@ covid.IL <- covid %>%
          Date=as.Date(date, "%Y-%m-%d"))%>%
   filter(date>="2021-01-01")    
 
-PC_Plot<-ggplot(data=covid.IL,aes(x=date,y1=pc_cases,y2=pc_deaths),geom_plot())
+#PC_Plot<-ggplot(data=covid.IL,aes(x=date,y1=pc_cases,y2=pc_deaths), geom_plot())
+
+#Using the ggplot is fine, but this is how the code should read. JRG
+PC_Plot<-ggplot(data=covid.IL) +
+  geom_line(aes(x=Date,y=pc_deaths))
+#Then doing the same for the pc_cases. JRG
+PC_Plot<-ggplot(data=covid.IL) +
+  geom_line(aes(x=Date,y=pc_cases))
+
 print(PC_Plot)
                 
